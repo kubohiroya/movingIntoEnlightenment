@@ -10,8 +10,8 @@ mieApp::mieApp(const int _numCameras, const screenConfig __screenConfig, const i
     numCameras = _numCameras;
     _screenConfig = __screenConfig;
     
-    int camWidth = _screenWidth / numCameras;
-    int camHeight = _screenHeight;
+    int camWidth = _screenWidth / _screenConfig.cols;
+    int camHeight = _screenHeight / _screenConfig.rows;
   
     for(int cameraIndex = 0; cameraIndex < numCameras; cameraIndex++){
         ofVideoGrabber * thisVidGrabber = new ofVideoGrabber();

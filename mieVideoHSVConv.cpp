@@ -16,8 +16,11 @@ void mieVideoHSVConv::drawPixels(unsigned char * pixels){
     
     ofPushStyle();
     
-    for(int i = 0; i < width; i+=10){
-        for(int j = 0; j < height; j+=10){
+    const int step = 4;
+    const int size = 2;
+    
+    for(int i = 0; i < width; i+=step){
+        for(int j = 0; j < height; j+=step){
             int index = (j * width + i)*3;
             
             unsigned char r = pixels[index];
@@ -35,7 +38,7 @@ void mieVideoHSVConv::drawPixels(unsigned char * pixels){
             convHSVtoRGB(h, s, v, &r, &g, &b);//hsv値からrgb値を生成
             
             ofSetColor(r,g,b,255);
-            ofCircle(ox+i, oy+j, 5.0);
+            ofCircle(ox+i, oy+j, size);
             
         }
     }

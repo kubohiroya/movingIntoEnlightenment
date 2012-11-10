@@ -21,19 +21,22 @@ void mieVideoDrawingSpots::drawPixels(unsigned char * pixels){
     
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+    
+    const int step = 4;
+    const int size = 2;
 
-    for(int i = 0; i < width; i+=10){
-        for(int j = 0; j < height; j+=10){
+    for(int i = 0; i < width; i+=step){
+        for(int j = 0; j < height; j+=step){
             int index = (j * width + i)*3;
             unsigned char r = pixels[index];
             unsigned char g = pixels[index + 1];
             unsigned char b = pixels[index + 2];
             ofSetColor(255,0,0,100);
-            ofCircle(ox+i, oy+j, 20.0*(float)r/255.0);
+            ofCircle(ox+i, oy+j, size*(float)r/255.0);
             ofSetColor(0,255,0,100);
-            ofCircle(ox+i, oy+j, 20.0*(float)g/255.0);
+            ofCircle(ox+i, oy+j, size*(float)g/255.0);
             ofSetColor(0,0,255,100);
-            ofCircle(ox+i, oy+j, 20.0*(float)b/255.0);
+            ofCircle(ox+i, oy+j, size*(float)b/255.0);
         }
     }
     
