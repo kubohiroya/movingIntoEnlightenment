@@ -45,9 +45,9 @@ mieVideo* mieVideoFactory::create(const int cameraIndex, const int videoIndex,
         case 1: //1番目のビデオ領域
             return new mieVideoDrawingSpots(cameraIndex, ox, oy, width, height, ofVideoGrabber);
         case 2: //2番目のビデオ領域
-            return new mieVideoPassThrough(cameraIndex, ox, oy, width, height, ofVideoGrabber);
+            return new mieVideoOpenCV(cameraIndex, ox, oy, width, height, ofVideoGrabber);
         case 3: //3番目のビデオ領域
-            return 0;
+            return new mieVideoPassThrough(cameraIndex, ox, oy, width, height, ofVideoGrabber);
     }
 }
 
@@ -61,7 +61,7 @@ screen createScreen(){
 
 mieApp * createMieApp(const screen screen){
     // 内蔵カメラx1　→ ビデオ領域1つ
-    // return new mieApp(SINGLE_CAMERA, SINGLE_VIDEO_CONFIG, screen.width, screen.height);
+    //return new mieApp(SINGLE_CAMERA, SINGLE_VIDEO_CONFIG, screen.width, screen.height);
     
     // 内蔵カメラx1+外部カメラx2 → そのうち外部カメラx2を用いて、ビデオ領域2つのサイドバイサイドでの「立体視」
     // return new mieApp(TRIPLE_CAMERA, SIDE_BY_SIDE_VIDEO_CONFIG, screen.width, screen.height);

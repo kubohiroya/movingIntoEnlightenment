@@ -52,20 +52,36 @@ mieApp::~mieApp(){
 void mieApp::setup(){
     ofBackground(0,0,0);
     ofEnableSmoothing();
+    
+    for(int i = _screenConfig.numVideos() - 1; 0 <= i; i--){
+        if(mieVideoArray[i] == 0){
+            continue;
+        }
+        mieVideoArray[i]->setup();
+    }
 }
 
 //--------------------------------------------------------------
-void mieApp::update(){
-    for(int cameraIndex = 0; cameraIndex < numCameras; cameraIndex++){
-        vidGrabberArray[cameraIndex]->grabFrame();
-    }
-    
+void mieApp::grabFrames(){
+        for(int cameraIndex = 0; cameraIndex < numCameras; cameraIndex++){
+            vidGrabberArray[cameraIndex]->grabFrame();
+        }
+}
+
+void mieApp::updateVideos(){
     for(int i = _screenConfig.numVideos() - 1; 0 <= i; i--){
         if(mieVideoArray[i] == 0){
             continue;
         }
         mieVideoArray[i]->update();
     }
+}
+
+void mieApp::update(){
+
+    grabFrames();
+    
+    updateVideos();
 }
 
 //--------------------------------------------------------------

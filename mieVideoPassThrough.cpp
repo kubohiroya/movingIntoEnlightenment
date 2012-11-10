@@ -11,10 +11,14 @@
 mieVideoPassThrough::mieVideoPassThrough() : mieVideo::mieVideo(){};
 
 mieVideoPassThrough::mieVideoPassThrough(const int cameraIndex, const float ox, const float oy, const int width, const int height, ofVideoGrabber *_vidGrabber) :
-mieVideo(cameraIndex, ox, oy, width, height, _vidGrabber){
+mieVideo::mieVideo(cameraIndex, ox, oy, width, height, _vidGrabber){
 };
 
-void mieVideoPassThrough::drawPixels(unsigned char * pixels){
+void mieVideoPassThrough::setup(){};
+
+void mieVideoPassThrough::update(){};
+
+void mieVideoPassThrough::draw(){
     vidGrabber->draw(ox, oy, width, height);
 };
 

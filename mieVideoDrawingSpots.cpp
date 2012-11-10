@@ -8,11 +8,11 @@
 
 #include "mieVideoDrawingSpots.h"
 
-mieVideoDrawingSpots::mieVideoDrawingSpots() : mieVideo::mieVideo(){};
+mieVideoDrawingSpots::mieVideoDrawingSpots() : mieVideoPixelSource::mieVideoPixelSource(){};
 
 mieVideoDrawingSpots::mieVideoDrawingSpots(const int cameraIndex, const float _ox, const float _oy, const int width, const int height,
                                            ofVideoGrabber *vidGrabber) :
-    mieVideo(cameraIndex, _ox, _oy, width, height, vidGrabber){
+    mieVideoPixelSource(cameraIndex, _ox, _oy, width, height, vidGrabber){
 };
 
 void mieVideoDrawingSpots::drawPixels(unsigned char * pixels){

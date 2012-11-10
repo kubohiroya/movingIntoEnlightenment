@@ -15,6 +15,7 @@
 #include "mieVideoDrawingSpots.h"
 #include "mieVideoPassThrough.h"
 #include "mieVideoHSVConv.h"
+#include "mieVideoOpenCV.h"
 
 class mieVideoFactory{
 public:

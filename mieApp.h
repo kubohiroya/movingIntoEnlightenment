@@ -28,10 +28,13 @@ class mieApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-    int numCameras;
-    ofVideoGrabber *vidGrabberArray[MAX_NUM_CAMERAS];
-    mieVideo* mieVideoArray[MAX_NUM_VIDEOS];
+        int numCameras;
+        ofVideoGrabber *vidGrabberArray[MAX_NUM_CAMERAS];
+        mieVideo* mieVideoArray[MAX_NUM_VIDEOS];
     
+    protected:
+        void grabFrames();
+        void updateVideos();
     
     private:
     

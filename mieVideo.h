@@ -17,13 +17,13 @@ public:
     mieVideo(const int cameraIndex, const float ox, const float oy, const int width, const int height,
              ofVideoGrabber * ofVideoGrabber);
     ~mieVideo();
-    
-    void update();
-    void draw();
+
+    virtual void setup();
+    virtual void update();
+    virtual void draw();
+
     void videoSettings();
     
-    virtual void drawPixels(unsigned char * pixels) = 0;
-
     int cameraIndex;
     float ox, oy;
     int width;

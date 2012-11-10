@@ -15,7 +15,9 @@ public:
     mieVideoPassThrough(const int cameraIndex, const float ox, const float oy, const int width, const int height,
                         ofVideoGrabber *vidGrabber);
 
-    void drawPixels(unsigned char * pixels);
+    void setup();
+    void update();
+    void draw();
     
 private:
 

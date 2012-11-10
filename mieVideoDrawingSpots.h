@@ -7,9 +7,9 @@
 //
 
 #pragma once
-#include "mieVideo.h"
+#include "mieVideoPixelSource.h"
 
-class mieVideoDrawingSpots : public mieVideo{
+class mieVideoDrawingSpots : public mieVideoPixelSource{
 public:
     mieVideoDrawingSpots();
     mieVideoDrawingSpots(const int cameraIndex, const float _ox, const float _oy, const int width, const int height,

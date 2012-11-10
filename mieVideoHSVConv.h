@@ -7,9 +7,9 @@
 //
 
 #pragma once
-#include "mieVideo.h"
+#include "mieVideoPixelSource.h"
 
-class mieVideoHSVConv : public mieVideo{
+class mieVideoHSVConv : public mieVideoPixelSource{
 public:
     mieVideoHSVConv();
     mieVideoHSVConv(const int cameraIndex, const float ox, const float oy, const int widht, const int height,
