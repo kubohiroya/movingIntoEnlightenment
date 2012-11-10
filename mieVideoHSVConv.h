@@ -12,13 +12,14 @@
 class mieVideoHSVConv : public mieVideo{
 public:
     mieVideoHSVConv();
-    mieVideoHSVConv(int cameraIndex, float ox, float oy, int widht, int height, ofVideoGrabber * ofVideoGrabber);
+    mieVideoHSVConv(const int cameraIndex, const float ox, const float oy, const int widht, const int height,
+                    ofVideoGrabber * ofVideoGrabber);
     
     void drawPixels(unsigned char * pixels);
 
 private:
-    static double max(double a, double b, double c);
-    static double min(double a, double b, double c);
-    static void convRGBtoHSV(unsigned char r, unsigned char g, unsigned char b, double *h, double *s, double *v);
-    static void convHSVtoRGB(double h, double s, double v,  unsigned char *r,  unsigned char *g,  unsigned char *b);
+    static double max(const double a, const double b, const double c);
+    static double min(const double a, const double b, const double c);
+    static void convRGBtoHSV(const unsigned char r, const unsigned char g, const unsigned char b, double *h, double *s, double *v);
+    static void convHSVtoRGB(const double h, const double s, const double v,  unsigned char *r,  unsigned char *g,  unsigned char *b);
 };

@@ -36,8 +36,9 @@ screen MBA_WINDOW = *new screen(1400,900, OF_WINDOW);// do not change
 // ビデオ領域を加工して表示するアルゴリズムのうち、どこにどれを使うかの選択内容を指定する関数。
 // 引数として、カメラの通し番号、ビデオ領域の通し番号、ビデオ領域の表示位置のx/y/width/height、動画取得用オブジェクトを与える。
 // 返り値として、抽象クラスmieVideoの実装クラスいずれかのインスタンスまたは0を返す。0は「何も表示しない」の意味になる。
-mieVideo* mieVideoFactory::create(int cameraIndex, int videoIndex,
-                                  float ox, float oy, int width, int height, ofVideoGrabber *ofVideoGrabber){
+mieVideo* mieVideoFactory::create(const int cameraIndex, const int videoIndex,
+                                  const float ox, const float oy, const int width, const int height,
+                                  ofVideoGrabber *ofVideoGrabber){
     switch(videoIndex){
         case 0: //0番目のビデオ領域
             return new mieVideoHSVConv(cameraIndex, ox, oy, width, height, ofVideoGrabber);
@@ -56,7 +57,7 @@ screen createScreen(){
     return MBA_WINDOW;
 }
 
-mieApp * createMieApp(screen screen){
+mieApp * createMieApp(const screen screen){
     // 内蔵カメラx1　→ ビデオ領域1つ
     // return new mieApp(SINGLE_CAMERA, SINGLE_VIDEO_CONFIG, screen.width, screen.height);
     

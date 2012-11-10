@@ -12,7 +12,8 @@
 class mieVideoPassThrough : public mieVideo{
 public:
     mieVideoPassThrough();
-    mieVideoPassThrough(int cameraIndex, float ox, float oy, int width, int height, ofVideoGrabber *vidGrabber);
+    mieVideoPassThrough(const int cameraIndex, const float ox, const float oy, const int width, const int height,
+                        ofVideoGrabber *vidGrabber);
 
     void drawPixels(unsigned char * pixels);
     

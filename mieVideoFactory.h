@@ -18,7 +18,8 @@
 
 class mieVideoFactory{
 public:
-    static mieVideo* create(int cameraIndex, int videoIndex,
-                             float ox, float oy, int width, int height, ofVideoGrabber *ofVideoGrabber);
+    static mieVideo* create(const int cameraIndex, const int videoIndex,
+                            const float ox, const float oy, const int width, const int height,
+                            ofVideoGrabber *ofVideoGrabber);
 };
 

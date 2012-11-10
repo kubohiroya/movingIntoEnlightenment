@@ -11,7 +11,7 @@
 class mieApp : public ofBaseApp{
 	public:
         mieApp();
-        mieApp(int numCameras, screenConfig screenConfig, int screenWidth, int screenHeight);
+        mieApp(const int numCameras, const screenConfig screenConfig, const int screenWidth, const int screenHeight);
         ~mieApp();
 
 		void setup();

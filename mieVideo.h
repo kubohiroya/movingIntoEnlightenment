@@ -14,7 +14,8 @@ class mieVideo {
 public:
     
     mieVideo();
-    mieVideo(int cameraIndex, float ox, float oy, int width, int height, ofVideoGrabber * ofVideoGrabber);
+    mieVideo(const int cameraIndex, const float ox, const float oy, const int width, const int height,
+             ofVideoGrabber * ofVideoGrabber);
     ~mieVideo();
     
     void update();
@@ -27,6 +28,7 @@ public:
     float ox, oy;
     int width;
     int height;
+    
     ofVideoGrabber *vidGrabber;
     
 private:

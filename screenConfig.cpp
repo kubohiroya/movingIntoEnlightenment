@@ -9,7 +9,7 @@
 #include "screenConfig.h"
 
 screenConfig::screenConfig(){};
-screenConfig::screenConfig(int _cols, int _rows, int* _cameraIndexArray){
+screenConfig::screenConfig(const int _cols, const int _rows, const int* _cameraIndexArray){
     cols = _cols;
     rows = _rows;
     cameraIndexArray = _cameraIndexArray;

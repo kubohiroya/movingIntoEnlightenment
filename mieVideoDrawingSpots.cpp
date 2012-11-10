@@ -10,7 +10,8 @@
 
 mieVideoDrawingSpots::mieVideoDrawingSpots() : mieVideo::mieVideo(){};
 
-mieVideoDrawingSpots::mieVideoDrawingSpots(int cameraIndex, float _ox, float _oy, int width, int height, ofVideoGrabber *vidGrabber) :
+mieVideoDrawingSpots::mieVideoDrawingSpots(const int cameraIndex, const float _ox, const float _oy, const int width, const int height,
+                                           ofVideoGrabber *vidGrabber) :
     mieVideo(cameraIndex, _ox, _oy, width, height, vidGrabber){
 };
 

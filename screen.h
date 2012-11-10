@@ -13,6 +13,6 @@ public:
     int height;
     int mode;
     
-    screen(int _width, int _height, int _mode);
+    screen(const int _width, const int _height, const int _mode);
 
 };

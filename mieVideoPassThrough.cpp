@@ -10,7 +10,7 @@
 
 mieVideoPassThrough::mieVideoPassThrough() : mieVideo::mieVideo(){};
 
-mieVideoPassThrough::mieVideoPassThrough(int cameraIndex, float ox, float oy, int width, int height, ofVideoGrabber *_vidGrabber) :
+mieVideoPassThrough::mieVideoPassThrough(const int cameraIndex, const float ox, const float oy, const int width, const int height, ofVideoGrabber *_vidGrabber) :
 mieVideo(cameraIndex, ox, oy, width, height, _vidGrabber){
 };
 

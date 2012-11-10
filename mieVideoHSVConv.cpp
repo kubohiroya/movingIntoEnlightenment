@@ -9,7 +9,7 @@
 #include "mieVideoHSVConv.h"
 
 mieVideoHSVConv::mieVideoHSVConv(){};
-mieVideoHSVConv::mieVideoHSVConv(int cameraIndex, float ox, float oy, int width, int height, ofVideoGrabber * ofVideoGrabber):mieVideo(cameraIndex, ox, oy, width, height, ofVideoGrabber){
+mieVideoHSVConv::mieVideoHSVConv(const int cameraIndex, const float ox, const float oy, const int width, const int height, ofVideoGrabber * ofVideoGrabber):mieVideo(cameraIndex, ox, oy, width, height, ofVideoGrabber){
 };
 
 void mieVideoHSVConv::drawPixels(unsigned char * pixels){

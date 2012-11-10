@@ -15,10 +15,10 @@ class screenConfig{
     
 public:
     screenConfig();
-    screenConfig(int cols, int rows, int* cameraIndexArray);
+    screenConfig(const int cols, const int rows, const int* cameraIndexArray);
         
     int numVideos();
     
     int cols, rows;
-    int *cameraIndexArray;
+    const int *cameraIndexArray;
 };

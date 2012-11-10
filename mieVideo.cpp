@@ -15,7 +15,8 @@ mieVideo::mieVideo(){
 mieVideo::~mieVideo(){
 };
 
-mieVideo::mieVideo(int _cameraIndex, float _ox, float _oy, int _width, int _height, ofVideoGrabber * _vidGrabber){
+mieVideo::mieVideo(const int _cameraIndex, const float _ox, const float _oy, const int _width, const int _height,
+                   ofVideoGrabber * _vidGrabber){
     cameraIndex = _cameraIndex;
     width = _width;
     height = _height;

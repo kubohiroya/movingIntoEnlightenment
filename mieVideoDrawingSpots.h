@@ -12,7 +12,8 @@
 class mieVideoDrawingSpots : public mieVideo{
 public:
     mieVideoDrawingSpots();
-    mieVideoDrawingSpots(int cameraIndex, float _ox, float _oy, int width, int height, ofVideoGrabber * vidGrabber);
+    mieVideoDrawingSpots(const int cameraIndex, const float _ox, const float _oy, const int width, const int height,
+                         ofVideoGrabber * vidGrabber);
 
     void drawPixels(unsigned char * pixels);
 };

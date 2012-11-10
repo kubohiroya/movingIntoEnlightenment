@@ -5,7 +5,7 @@ mieApp::mieApp(){
 };
 
 
-mieApp::mieApp(int _numCameras, screenConfig __screenConfig, int _screenWidth, int _screenHeight){
+mieApp::mieApp(const int _numCameras, const screenConfig __screenConfig, const int _screenWidth, const int _screenHeight){
     
     numCameras = _numCameras;
     _screenConfig = __screenConfig;

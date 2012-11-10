@@ -8,7 +8,7 @@
 
 #include "screen.h"
 
-screen::screen(int _width, int _height, int _mode){
+screen::screen(const int _width, const int _height, const int _mode){
     width = _width;
     height = _height;
     mode = _mode;
