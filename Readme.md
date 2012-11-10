@@ -23,7 +23,7 @@ mieVideoクラスのサブクラスを作る場合には、クラス名がmieVid
     class mieVideoHoge : public mieVideo{
     public:
         mieVideoHoge();
-        mieVideoHoge(int cameraIndex, float _ox, float _oy, int width, int height, ofVideoGrabber * vidGrabber);
+        mieVideoHoge(const int cameraIndex, const float _ox, const float _oy, const int width, const int height, ofVideoGrabber * vidGrabber);
 
         void drawPixels(unsigned char * pixels);
     };
@@ -34,7 +34,7 @@ mieVideoクラスのサブクラスを作る場合には、クラス名がmieVid
 
     mieVideoHoge::mieVideoHoge() : mieVideo::mieVideo(){};
 
-    mieVideoHoge::mieVideoHoge(int cameraIndex, float _ox, float _oy, int width, int height, ofVideoGrabber *vidGrabber) :
+    mieVideoHoge::mieVideoHoge(const int cameraIndex, const float _ox, const float _oy, const int width, const int height, ofVideoGrabber *vidGrabber) :
     mieVideo(cameraIndex, _ox, _oy, width, height, vidGrabber){
     };
 
