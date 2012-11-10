@@ -9,7 +9,7 @@
 // これらの配列により、スクリーンを升目状に区分するビデオ領域それぞれが、どのカメラと接続されるのかを指定する。
 // これらの配列の0番目の要素は、スクリーンを升目上に区分するビデオ領域のうち、左上の端を指定する。
 // 配列の要素としては、USBカメラの通し番号(0からの通し番号)を代入する。
-
+// 配列の要素は重複した値を取ることができ、そうして重複した箇所には同じカメラが接続されることになる。
 int SINGLE_CAMERA_ID_ARRAY[] = {0};
 int DOUBLE_CAMERA_ID_ARRAY[] = {0,1};
 int TRIPLE_CAMERA_ID_ARRAY[] = {1,0,2};
@@ -52,8 +52,10 @@ mieVideo* mieVideoFactory::create(const int cameraIndex, const int videoIndex,
 }
 
 screen createScreen(){
-    // MBA_WINDOW; //MacBookAirでのウィンドウでの表示
-    // MBA_FULLSCREEN; // MacBookAirでのフルスクリーン表示
+    // HMD_WINDOW;     // HeadMountedDisplayサイズでのウィンドウで表示
+    // HMD_FULLSCREEN; // HeadMountedDisplayサイズでのフルスクリーン表示
+    // MBA_WINDOW;     // MacBookAirの画面サイズでのウィンドウ表示
+    // MBA_FULLSCREEN; // MacBookAirの画面サイズでのフルスクリーン表示
     return MBA_WINDOW;
 }
 
