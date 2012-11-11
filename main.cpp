@@ -3,6 +3,12 @@
 #include "mieApp.h"
 #include "mieVideoFactory.h"
 
+#include "mieVideoDrawingSpots.h"
+#include "mieVideoPassThrough.h"
+#include "mieVideoHSVConv.h"
+#include "mieVideoOpenCV.h"
+#include "mieVideoContourFinder.h"
+
 #include "ofAppGlutWindow.h"
 
 //--------------------------------------------------------------
@@ -32,6 +38,9 @@ screen HMD_WINDOW = *new screen(1280,720, OF_WINDOW);// do not change
 screen MBA_FULLSCREEN = *new screen(1400,900, OF_FULLSCREEN);// do not change
 screen MBA_WINDOW = *new screen(1400,900, OF_WINDOW);// do not change
 
+screen DEBUG_WINDOW = *new screen(640,480, OF_WINDOW);// do not change
+
+
 //--------------------------------------------------------------
 // ビデオ領域を加工して表示するアルゴリズムのうち、どこにどれを使うかの選択内容を指定する関数。
 // 引数として、カメラの通し番号、ビデオ領域の通し番号、ビデオ領域の表示位置のx/y/width/height、動画取得用オブジェクトを与える。
@@ -45,9 +54,10 @@ mieVideo* mieVideoFactory::create(const int cameraIndex, const int videoIndex,
         case 1: //1番目のビデオ領域
             return new mieVideoDrawingSpots(cameraIndex, ox, oy, width, height, ofVideoGrabber);
         case 2: //2番目のビデオ領域
-            return new mieVideoOpenCV(cameraIndex, ox, oy, width, height, ofVideoGrabber);
-        case 3: //3番目のビデオ領域
+            //return new mieVideoOpenCV(cameraIndex, ox, oy, width, height, ofVideoGrabber);
             return new mieVideoPassThrough(cameraIndex, ox, oy, width, height, ofVideoGrabber);
+        case 3: //3番目のビデオ領域
+            return new mieVideoContourFinder(cameraIndex, ox, oy, width, height, ofVideoGrabber);
     }
 }
 
@@ -56,7 +66,7 @@ screen createScreen(){
     // HMD_FULLSCREEN; // HeadMountedDisplayサイズでのフルスクリーン表示
     // MBA_WINDOW;     // MacBookAirの画面サイズでのウィンドウ表示
     // MBA_FULLSCREEN; // MacBookAirの画面サイズでのフルスクリーン表示
-    return MBA_WINDOW;
+    return DEBUG_WINDOW;
 }
 
 mieApp * createMieApp(const screen screen){
