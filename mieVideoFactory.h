@@ -10,12 +10,6 @@
 #pragma once
 
 #include "mieVideo.h"
-#include "mieVideo.h"
-#include "mieVideo.h"
-#include "mieVideoDrawingSpots.h"
-#include "mieVideoPassThrough.h"
-#include "mieVideoHSVConv.h"
-#include "mieVideoOpenCV.h"
 
 class mieVideoFactory{
 public:
