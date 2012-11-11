@@ -63,9 +63,9 @@ void mieApp::setup(){
 
 //--------------------------------------------------------------
 void mieApp::grabFrames(){
-        for(int cameraIndex = 0; cameraIndex < numCameras; cameraIndex++){
-            vidGrabberArray[cameraIndex]->grabFrame();
-        }
+    for(int cameraIndex = 0; cameraIndex < numCameras; cameraIndex++){
+        vidGrabberArray[cameraIndex]->grabFrame();
+    }
 }
 
 void mieApp::updateVideos(){
@@ -98,7 +98,12 @@ void mieApp::draw(){
 
 //--------------------------------------------------------------
 void mieApp::keyPressed(int key){
-
+    for(int i = _screenConfig.numVideos() - 1; 0 <= i; i--){
+        if(mieVideoArray[i] == 0){
+            continue;
+        }
+        mieVideoArray[i]->keyPressed(key);
+    }
 }
 
 //--------------------------------------------------------------

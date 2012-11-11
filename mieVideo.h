@@ -21,7 +21,8 @@ public:
     virtual void setup();
     virtual void update();
     virtual void draw();
-
+    virtual void keyPressed(int key);
+    
     void videoSettings();
     
     int cameraIndex;

@@ -28,7 +28,8 @@ mieVideo::mieVideo(const int _cameraIndex, const float _ox, const float _oy, con
 void mieVideo::setup(){};
 void mieVideo::update(){};
 void mieVideo::draw(){};
-
+void mieVideo::keyPressed(int key){};
+    
 void mieVideo::videoSettings(){
     vidGrabber->videoSettings();
 };
