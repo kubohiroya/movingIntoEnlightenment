@@ -8,6 +8,7 @@
 #include "mieVideoHSVConv.h"
 #include "mieVideoOpenCV.h"
 #include "mieVideoContourFinder.h"
+#include "mieVideoSightSteeler.h"
 
 #include "ofAppGlutWindow.h"
 
@@ -18,7 +19,7 @@
 // 配列の要素は重複した値を取ることができ、そうして重複した箇所には同じカメラが接続されることになる。
 int SINGLE_CAMERA_ID_ARRAY[] = {0};
 int DOUBLE_CAMERA_ID_ARRAY[] = {0,1};
-int TRIPLE_CAMERA_ID_ARRAY[] = {1,0,2};
+int TRIPLE_CAMERA_ID_ARRAY[] = {0,2,1};
 int QUAD_CAMERA_ID_ARRAY[] = {0,0,0,0};
 
 //--------------------------------------------------------------
@@ -50,11 +51,15 @@ mieVideo* mieVideoFactory::create(const int cameraIndex, const int videoIndex,
                                   ofVideoGrabber *ofVideoGrabber){
     switch(videoIndex){
         case 0: //0番目のビデオ領域
-            return new mieVideoHSVConv(cameraIndex, ox, oy, width, height, ofVideoGrabber);
+            return new mieVideoPassThrough(cameraIndex, ox, oy, width, height, ofVideoGrabber);
+            //return new mieVideoDrawingSpots(cameraIndex, ox, oy, width, height, ofVideoGrabber);
+            //return new mieVideoHSVConv(cameraIndex, ox, oy, width, height, ofVideoGrabber);
         case 1: //1番目のビデオ領域
-            return new mieVideoDrawingSpots(cameraIndex, ox, oy, width, height, ofVideoGrabber);
+            return new mieVideoPassThrough(cameraIndex, ox, oy, width, height, ofVideoGrabber);
+            //return new mieVideoDrawingSpots(cameraIndex, ox, oy, width, height, ofVideoGrabber);
+            //
         case 2: //2番目のビデオ領域
-            //return new mieVideoOpenCV(cameraIndex, ox, oy, width, height, ofVideoGrabber);
+            //return new mieVideoSightSteeler(cameraIndex, ox, oy, width, height, ofVideoGrabber);
             return new mieVideoPassThrough(cameraIndex, ox, oy, width, height, ofVideoGrabber);
         case 3: //3番目のビデオ領域
             return new mieVideoContourFinder(cameraIndex, ox, oy, width, height, ofVideoGrabber);
@@ -62,11 +67,11 @@ mieVideo* mieVideoFactory::create(const int cameraIndex, const int videoIndex,
 }
 
 screen createScreen(){
-    // HMD_WINDOW;     // HeadMountedDisplayサイズでのウィンドウで表示
-    // HMD_FULLSCREEN; // HeadMountedDisplayサイズでのフルスクリーン表示
-    // MBA_WINDOW;     // MacBookAirの画面サイズでのウィンドウ表示
-    // MBA_FULLSCREEN; // MacBookAirの画面サイズでのフルスクリーン表示
-    return DEBUG_WINDOW;
+    // return HMD_WINDOW;     // HeadMountedDisplayサイズでのウィンドウで表示
+    return HMD_FULLSCREEN; // HeadMountedDisplayサイズでのフルスクリーン表示
+    // return MBA_WINDOW;     // MacBookAirの画面サイズでのウィンドウ表示
+    // return MBA_FULLSCREEN; // MacBookAirの画面サイズでのフルスクリーン表示
+    // return DEBUG_WINDOW;
 }
 
 mieApp * createMieApp(const screen screen){
@@ -74,10 +79,10 @@ mieApp * createMieApp(const screen screen){
     //return new mieApp(SINGLE_CAMERA, SINGLE_VIDEO_CONFIG, screen.width, screen.height);
     
     // 内蔵カメラx1+外部カメラx2 → そのうち外部カメラx2を用いて、ビデオ領域2つのサイドバイサイドでの「立体視」
-    // return new mieApp(TRIPLE_CAMERA, SIDE_BY_SIDE_VIDEO_CONFIG, screen.width, screen.height);
+    return new mieApp(TRIPLE_CAMERA, SIDE_BY_SIDE_VIDEO_CONFIG, screen.width, screen.height);
     
     // 内蔵カメラx1 → ビデオ領域4つで動作内容を比較
-    return new mieApp(SINGLE_CAMERA, QUAD_VIDEO_CONFIG, screen.width, screen.height);
+    // return new mieApp(SINGLE_CAMERA, QUAD_VIDEO_CONFIG, screen.width, screen.height);
 }
 
 //--------------------------------------------------------------
