@@ -51,16 +51,16 @@ mieVideo* mieVideoFactory::create(const int cameraIndex, const int videoIndex,
                                   ofVideoGrabber *ofVideoGrabber){
     switch(videoIndex){
         case 0: //0番目のビデオ領域
-            return new mieVideoPassThrough(cameraIndex, ox, oy, width, height, ofVideoGrabber);
-            //return new mieVideoDrawingSpots(cameraIndex, ox, oy, width, height, ofVideoGrabber);
-            //return new mieVideoHSVConv(cameraIndex, ox, oy, width, height, ofVideoGrabber);
+            //return new mieVideoPassThrough(cameraIndex, ox, oy, width, height, ofVideoGrabber);
+            return new mieVideoDrawingSpots(cameraIndex, ox, oy, width, height, ofVideoGrabber);
+            //
         case 1: //1番目のビデオ領域
-            return new mieVideoPassThrough(cameraIndex, ox, oy, width, height, ofVideoGrabber);
-            //return new mieVideoDrawingSpots(cameraIndex, ox, oy, width, height, ofVideoGrabber);
+            //return new mieVideoPassThrough(cameraIndex, ox, oy, width, height, ofVideoGrabber);
+            return new mieVideoHSVConv(cameraIndex, ox, oy, width, height, ofVideoGrabber);
             //
         case 2: //2番目のビデオ領域
-            //return new mieVideoSightSteeler(cameraIndex, ox, oy, width, height, ofVideoGrabber);
-            return new mieVideoPassThrough(cameraIndex, ox, oy, width, height, ofVideoGrabber);
+            return new mieVideoSightSteeler(cameraIndex, ox, oy, width, height, ofVideoGrabber);
+            //return new mieVideoPassThrough(cameraIndex, ox, oy, width, height, ofVideoGrabber);
         case 3: //3番目のビデオ領域
             return new mieVideoContourFinder(cameraIndex, ox, oy, width, height, ofVideoGrabber);
     }
@@ -68,10 +68,10 @@ mieVideo* mieVideoFactory::create(const int cameraIndex, const int videoIndex,
 
 screen createScreen(){
     // return HMD_WINDOW;     // HeadMountedDisplayサイズでのウィンドウで表示
-    return HMD_FULLSCREEN; // HeadMountedDisplayサイズでのフルスクリーン表示
+    // return HMD_FULLSCREEN; // HeadMountedDisplayサイズでのフルスクリーン表示
     // return MBA_WINDOW;     // MacBookAirの画面サイズでのウィンドウ表示
     // return MBA_FULLSCREEN; // MacBookAirの画面サイズでのフルスクリーン表示
-    // return DEBUG_WINDOW;
+    return DEBUG_WINDOW;
 }
 
 mieApp * createMieApp(const screen screen){
@@ -79,10 +79,10 @@ mieApp * createMieApp(const screen screen){
     //return new mieApp(SINGLE_CAMERA, SINGLE_VIDEO_CONFIG, screen.width, screen.height);
     
     // 内蔵カメラx1+外部カメラx2 → そのうち外部カメラx2を用いて、ビデオ領域2つのサイドバイサイドでの「立体視」
-    return new mieApp(TRIPLE_CAMERA, SIDE_BY_SIDE_VIDEO_CONFIG, screen.width, screen.height);
+    // return new mieApp(TRIPLE_CAMERA, SIDE_BY_SIDE_VIDEO_CONFIG, screen.width, screen.height);
     
     // 内蔵カメラx1 → ビデオ領域4つで動作内容を比較
-    // return new mieApp(SINGLE_CAMERA, QUAD_VIDEO_CONFIG, screen.width, screen.height);
+    return new mieApp(SINGLE_CAMERA, QUAD_VIDEO_CONFIG, screen.width, screen.height);
 }
 
 //--------------------------------------------------------------
